@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -45,11 +46,9 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         val notificationhelper = NotificationHelper(this)
-
         binding = DataBindingUtil.setContentView(this, R.layout.testlayout)
+        setUpStatusBar(true)
         viM = ViewModelProvider(this).get(WeatherVm::class.java)
 
         binding.lifecycleOwner = this
@@ -358,7 +357,16 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
+    fun setUpStatusBar(isLight: Boolean) {
+        supportActionBar?.hide()
+        val decorView = window.decorView
+        if (isLight) {
+            decorView.systemUiVisibility = decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else {
+            decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+        }
+        window.statusBarColor = Color.TRANSPARENT
+    }
 
 }
 

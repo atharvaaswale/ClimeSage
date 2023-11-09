@@ -13,7 +13,6 @@
         <item name="android:windowFullscreen">true</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -25,13 +24,9 @@
 
     <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeTopLeft">30dp</item>
         <item name="cornerSizeBottomRight">30dp</item>
         <item name="cornerSizeBottomLeft">30dp</item>
     </style>
-
-
-
-
 </resources>

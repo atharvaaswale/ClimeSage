@@ -20,10 +20,6 @@
             android:layout_marginBottom="4dp"
             android:id="@+id/timeDisplay" />
 
-
-
-
-
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -32,8 +28,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:id="@+id/imageDisplay" />
-
-
 
         <TextView
             android:layout_width="0dp"
@@ -46,17 +40,14 @@
             android:textStyle="bold"
             android:layout_marginBottom="4dp"
             android:id="@+id/tempDisplay" />
-
     </TableRow>
 
     <TableRow>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_span="3"
             android:background="@android:color/darker_gray" />
-
     </TableRow>
 
 </TableLayout>
