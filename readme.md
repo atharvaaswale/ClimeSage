@@ -16,7 +16,7 @@
 ##### Images
 
 
-![](images/first.jpg)
+![](images/app_image.jpg)
 
 
 ##### Note: insert your api key before running the app
