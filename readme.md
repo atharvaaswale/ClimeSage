@@ -1,18 +1,12 @@
-#### Weather App | Open Weather Api | Retrofit & Kotlin Coroutines | FusedLocation 
+#### ClimeSage | Weather App | Open Weather Api | Retrofit & Kotlin Coroutines
 
 
-##### YouTube Tutorial: https://www.youtube.com/watch?v=Xfg6WKek80w 
+#### API Call is 5 Days/3 hours Forecast
 
 
-#### API Call is 5 Days/3 hours Forecast 
+1. Search Weather By Current Location
 
-
-1. Search Weather By Current Location | FusedLocation 
-
-2. Search Weather By City 
-
-3. Get notification to bring umbrella if its raining 
-
+2. Search Weather By City
 
 
 ###### For today's forecast I get the system's current date and filter out the objects that contain the weather of today and store them in a today's weather list 
