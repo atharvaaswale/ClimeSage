@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WeatherApp"
+        android:theme="@style/Theme.ClimeSage"
         tools:targetApi="31">
 
         <activity

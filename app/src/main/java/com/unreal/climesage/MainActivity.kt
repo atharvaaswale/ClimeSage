@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
             val longitude = location.longitude
 
             viM.getWeather(null, latitude.toString(), longitude.toString())
-            logLocation(latitude, longitude)
+            //logLocation(latitude, longitude)
         }
 
 

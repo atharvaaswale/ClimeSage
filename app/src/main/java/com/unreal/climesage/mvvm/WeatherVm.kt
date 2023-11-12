@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 
 @RequiresApi(Build.VERSION_CODES.O)
 class WeatherVm : ViewModel() {
@@ -34,9 +35,12 @@ class WeatherVm : ViewModel() {
     fun getWeather(city: String? = null, lati: String?=null, longi:String?=null) = viewModelScope.launch(Dispatchers.IO) {
         val todayWeatherList = mutableListOf<WeatherList>()
 
-        val currentDateTime = LocalDateTime.now()
-        val currentDateO = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        //val currentDateTime = LocalDateTime.now()
+        //val currentDateO = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
+        val calendar = Calendar.getInstance()
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDateO = simpleDateFormat.format(calendar.time)
 
        Log.e("ViewModelCoordinates", "$lati $longi")
 

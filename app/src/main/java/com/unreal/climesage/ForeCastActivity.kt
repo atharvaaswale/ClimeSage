@@ -76,12 +76,11 @@ class ForeCastActivity : AppCompatActivity() {
             val latitude = location.latitude
             val longitude = location.longitude
             viM.getForecastUpcoming(null, latitude.toString(), longitude.toString())
-            logLocation(latitude, longitude)
+            //logLocation(latitude, longitude)
         }
     }
 
     private fun logLocation(latitude: Double, longitude: Double) {
-        // Log the latitude and longitude
         val message = "Latitude: $latitude, Longitude: $longitude"
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
