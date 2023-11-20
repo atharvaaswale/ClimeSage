@@ -17,20 +17,11 @@ import java.time.*
 import java.util.*
 
 class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
-
     private var listOfTodayWeather = listOf<WeatherList>()
-
-
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayHolder {
-
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.todayforecastlist, parent, false)
         return TodayHolder(view)
-
-
     }
 
     override fun getItemCount(): Int {
@@ -69,11 +60,9 @@ class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
                 holder.imageDisplay.setImageResource(R.drawable.twod)
             }
 
-
             if (i.icon == "02n") {
                 holder.imageDisplay.setImageResource(R.drawable.twon)
             }
-
 
             if (i.icon == "03d" || i.icon == "03n") {
                 holder.imageDisplay.setImageResource(R.drawable.threedn)
@@ -83,7 +72,6 @@ class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
                 holder.imageDisplay.setImageResource(R.drawable.tend)
             }
 
-
             if (i.icon == "10n") {
                 holder.imageDisplay.setImageResource(R.drawable.tenn)
             }
@@ -92,7 +80,6 @@ class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
                 holder.imageDisplay.setImageResource(R.drawable.fourdn)
             }
 
-
             if (i.icon == "09d" || i.icon == "09n") {
                 holder.imageDisplay.setImageResource(R.drawable.ninedn)
             }
@@ -100,7 +87,6 @@ class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
             if (i.icon == "11d" || i.icon == "11n") {
                 holder.imageDisplay.setImageResource(R.drawable.elevend)
             }
-
 
             if (i.icon == "13d" || i.icon == "13n") {
                 holder.imageDisplay.setImageResource(R.drawable.thirteend)
@@ -111,7 +97,6 @@ class WeatherToday : RecyclerView.Adapter<TodayHolder>() {
             }
         }
     }
-
 
 
     fun setList(listOfToday: List<WeatherList>) {

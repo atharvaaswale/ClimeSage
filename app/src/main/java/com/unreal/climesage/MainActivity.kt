@@ -25,6 +25,10 @@ import com.unreal.climesage.service.LocationHelper
 import kotlinx.coroutines.DelicateCoroutinesApi
 import java.text.SimpleDateFormat
 import java.util.*
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.provider.Settings
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -67,8 +71,6 @@ class MainActivity : AppCompatActivity() {
             Log.e("TODayweather list", it.toString())
             adapter.setList(setNewlist)
             binding.forecastRecyclerView.adapter = adapter
-
-
         })
         viM.closetorexactlysameweatherdata.observe(this, Observer {
             val temperatureFahrenheit = it!!.main?.temp
@@ -117,10 +119,7 @@ class MainActivity : AppCompatActivity() {
                     binding.imageMain.setImageResource(R.drawable.tend)
                 }
                 if (i.icon == "10n") {
-
                     binding.imageMain.setImageResource(R.drawable.tenn)
-
-
                 }
                 if (i.icon == "04d" || i.icon == "04n") {
                     binding.imageMain.setImageResource(R.drawable.fourdn)
@@ -130,32 +129,19 @@ class MainActivity : AppCompatActivity() {
                     binding.imageMain.setImageResource(R.drawable.ninedn)
                 }
 
-
-
                 if (i.icon == "11d" || i.icon == "11n") {
                     binding.imageMain.setImageResource(R.drawable.elevend)
                 }
 
-
                 if (i.icon == "13d" || i.icon == "13n") {
-
                     binding.imageMain.setImageResource(R.drawable.thirteend)
-
-
                 }
 
                 if (i.icon == "50d" || i.icon == "50n") {
-
-
                     binding.imageMain.setImageResource(R.drawable.fiftydn)
-
-
                 }
-
             }
-
         })
-
 
         val searchEditText =
             binding.searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
@@ -163,51 +149,38 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.next5Days.setOnClickListener {
-
-
             startActivity(Intent(this, ForeCastActivity::class.java))
-
-
         }
 
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-
             override fun onQueryTextSubmit(query: String?): Boolean {
-
-
                 val sharedPrefs = SharedPrefs.getInstance(this@MainActivity)
                 sharedPrefs.setValueOrNull("city", query!!)
-
-
                 if (!query.isNullOrEmpty()) {
-
-                    viM.getWeather(query)
-
-
-
-
-                    binding.searchView.setQuery("", false)
-                    binding.searchView.clearFocus()
-                    binding.searchView.isIconified = true
+                    if (Utils.isConnectedToInternet(applicationContext)) {
+                        viM.getWeather(query)
+                        binding.searchView.setQuery("", false)
+                        binding.searchView.clearFocus()
+                        binding.searchView.isIconified = true
+                    } else {
+                        Utils.showAlertDialog(this@MainActivity,
+                            "Internet Required",
+                            "Please turn on Internet to use app",
+                            "Go to Settings",
+                            "Exit",
+                            { startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS)) },
+                            { finish() }
+                        )
+                    }
                 }
-
-
                 return true
-
-
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 return true
-
-
             }
-
-
         })
-
     }
 
 
@@ -217,9 +190,18 @@ class MainActivity : AppCompatActivity() {
             // Log latitude and longitude here
             val latitude = location.latitude
             val longitude = location.longitude
-
-            viM.getWeather(null, latitude.toString(), longitude.toString())
-            //logLocation(latitude, longitude)
+            if (Utils.isConnectedToInternet(applicationContext)) {
+                viM.getWeather(null, latitude.toString(), longitude.toString())
+            } else {
+                Utils.showAlertDialog(this,
+                    "Internet Required",
+                    "Please turn on Internet to use app",
+                    "Go to Settings",
+                    "Exit",
+                    { startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS)) },
+                    { finish() }
+                )
+            }
         }
 
 
